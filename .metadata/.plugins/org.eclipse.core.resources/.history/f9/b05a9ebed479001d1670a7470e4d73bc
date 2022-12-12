@@ -1,0 +1,33 @@
+package com.shop.myapp.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.shop.myapp.dto.BoardRequestDto;
+
+@Controller
+@RequestMapping("/board")
+public class BoardController {
+	
+    @GetMapping("/list")
+    public String openBoardList() {
+        return "board/list";
+    }
+
+    /**
+     * 게시글 등록 페이지
+     */
+    @GetMapping("/write")
+    public String openBoardWrite() {
+        return "board/write";
+    }
+
+    @PostMapping("/boards")
+    public Long save(@RequestBody final BoardRequestDto params) {
+    	return boardService.save(params);
+    }
+    
+}

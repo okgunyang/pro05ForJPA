@@ -7,6 +7,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.thymeleaf.util.StringUtils;
 
 import com.shop.myapp.dto.BoardRequestDto;
 import com.shop.myapp.dto.BoardResponseDto;
@@ -40,5 +41,41 @@ public class BoardService {
 		Board entity = boardRepository.findById(id).orElseThrow();
 		entity.update(params.getTitle(), params.getContent(), params.getWriter());
 		return id;
+	}
+	
+	//글 삭제
+	@Transactional
+    public Long delete(final Long id) {
+        Board entity = boardRepository.findById(id).orElseThrow();
+        entity.delete();
+        return id;
+    }
+	
+	//게시글 상세보기
+	@Transactional
+    public BoardResponseDto findById(final Long id) {
+        Board entity = boardRepository.findById(id).orElseThrow();
+        entity.increaseHits();
+        return new BoardResponseDto(entity);
+    }
+	
+	//type을 파라미터로 받아 선택처리하는 경우
+	public boolean executeQueryByType(final String type, final Long id, final BoardRequestDto params) {
+	    // INSERT
+	    if (StringUtils.equals(type, "INSERT")) {
+	        boardRepository.save(params.toEntity());
+	        return true;
+	    }
+	    Board entity = boardRepository.findById(id).orElseThrow();
+	    switch (type) {
+	    case "UPDATE": // UPDATE
+	        entity.update(params.getTitle(), params.getContent(), params.getWriter());
+	        break;
+
+	    case "DELETE": // DELETE
+	        entity.delete();
+	        break;
+	    }
+	    return true;
 	}
 }

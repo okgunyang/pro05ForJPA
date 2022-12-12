@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.shop.myapp.dto.BoardRequestDto;
 import com.shop.myapp.dto.BoardResponseDto;
+import com.shop.myapp.exception.CustomException;
+import com.shop.myapp.exception.ErrorCode;
 import com.shop.myapp.model.BoardService;
 
 import lombok.RequiredArgsConstructor;
@@ -23,25 +25,25 @@ public class BoardApiController {
 
     private final BoardService boardService;
 
-    /**
-     * 게시글 생성
-     */
+    @GetMapping("/test")
+    public String test() {
+        throw new CustomException(ErrorCode.POSTS_NOT_FOUND);
+    }
+
+    
+    //게시글 등록
     @PostMapping("/boards")
     public Long save(@RequestBody final BoardRequestDto params) {
         return boardService.save(params);
     }
 
-    /**
-     * 게시글 리스트 조회
-     */
+    //게시글 목록 조회
     @GetMapping("/boards")
     public List<BoardResponseDto> findAll() {
         return boardService.findAll();
     }
 
-    /**
-     * 게시글 수정
-     */
+    //게시글 수정
     @PatchMapping("/boards/{id}")
     public Long save(@PathVariable final Long id, @RequestBody final BoardRequestDto params) {
         return boardService.update(id, params);

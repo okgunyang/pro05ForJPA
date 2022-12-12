@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="BoardTests" project="myapp" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="com.shop.myapp.BoardTests" time="0.112" displayname="BoardTests" uniqueid="[engine:junit-jupiter]/[class:com.shop.myapp.BoardTests]">
-    <testcase name="save" classname="com.shop.myapp.BoardTests" time="0.112" displayname="save()" uniqueid="[engine:junit-jupiter]/[class:com.shop.myapp.BoardTests]/[method:save()]"/>
-  </testsuite>
-</testrun>
