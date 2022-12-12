@@ -1,0 +1,13 @@
+package com.shop.myapp.config;
+
+
+import org.springframework.context.annotation.Configuration;
+
+import lombok.AllArgsConstructor;
+
+@Configuration
+@EnableWebSecurity
+@AllArgsConstructor
+public class SecurityConfig {
+
+}

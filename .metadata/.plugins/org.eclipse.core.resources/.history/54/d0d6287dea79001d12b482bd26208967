@@ -1,0 +1,27 @@
+package com.shop.myapp.dto;
+
+import java.io.Serializable;
+
+import org.springframework.context.annotation.Role;
+
+import com.shop.myapp.entity.User;
+
+import lombok.Getter;
+
+@Getter
+public class UserSessionDto implements Serializable {
+    private String username;
+    private String password;
+    private String nickname;
+    private String email;
+    private Role role;
+	
+    /* Entity -> Dto */
+    public UserSessionDto(User user) {
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        this.nickname = user.getNickname();
+        this.email = user.getEmail();
+        this.role = user.getRole();
+    }
+}

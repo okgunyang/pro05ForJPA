@@ -3,11 +3,16 @@
  xmlns:th="http://www.thymeleaf.org"
  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
-  <title>메인 데이터</title>
+	<title>메인 페이지</title>
+	<th:block th:insert="fragments/common/head"></th:block>
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
-  <div class="wrapper">
-	메인 페이지
-  </div>
+<body>
+<div class="fluid-container">
+	<th:block th:insert="fragments/common/hd"></th:block>
+	<div class="container">
+	<h2>메인 페이지</h2>
+  	</div>
+	<th:block th:insert="fragments/common/ft"></th:block>
+</div>
 </body>
 </html>

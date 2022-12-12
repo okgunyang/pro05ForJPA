@@ -1,0 +1,6 @@
+package com.shop.myapp.config;
+
+@Configuration
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+}

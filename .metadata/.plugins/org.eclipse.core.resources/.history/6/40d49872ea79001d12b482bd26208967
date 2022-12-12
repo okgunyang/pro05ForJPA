@@ -1,0 +1,18 @@
+package com.shop.myapp.model;
+
+@RequiredArgsConstructor
+@Service
+public class UserService {
+ 
+    private final UserRepository userRepository;
+ 
+    private final BCryptPasswordEncoder encoder;
+ 
+    @Transactional
+    public Long join(UserDto dto) { 
+        dto.setPassword(encoder.encode(dto.getPassword()));
+        
+        return userRepository.save(dto.toEntity()).getId();
+    }
+ 
+}

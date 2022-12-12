@@ -5,13 +5,15 @@
 <head>
 	<title>게시판 글 목록</title>
 	<th:block th:insert="fragments/common/head"></th:block>
+	<script th:src="@{/datatables.min.js}"></script>
+	<link rel="stylesheet" th:href="@{/datatables.min.css}" />
 </head>
 <body>
 <div class="fluid-container">
 	<th:block th:insert="fragments/common/hd"></th:block>
 	<div class="container">
 		<h2 class="title">게시판 글 목록</h2>
-		<table class="table">
+		<table class="table" id="boardLst">
 			<thead>
 				<th>번호</th>
 				<th>글 제목</th>
@@ -29,5 +31,10 @@
 	</div>
 	<th:block th:insert="fragments/common/ft"></th:block>
 </div>	
+<script>
+$(document).ready(function(){
+	$("#boardLst").DataTable();	
+});
+</script>
 </body>
 </html>

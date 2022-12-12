@@ -42,4 +42,21 @@ select * from board;
 delete from board where id=1;
 commit;
 
+drop table member;
 
+create table member (
+    id bigint not null auto_increment comment 'PK',
+    email varchar(50) not null comment '이메일',
+    password varchar(300) not null comment '비밀번호',
+    role enum('ROLE_MEMBER', 'ROLE_ADMIN') not null comment '등급',
+    created_date datetime default now() comment '가입일',
+    modified_date datetime default now() comment '수정일',
+    primary key (id)
+) comment '회원';
+
+select * from member;
+
+update member set role="ROLE_ADMIN" where id=2;
+commit;
+
+delete from member where id=4;
